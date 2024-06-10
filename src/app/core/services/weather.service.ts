@@ -16,6 +16,7 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) {}
 
   getForecast(locationKey: string): Observable<Forecast> {
+    debugger
     const isMetric = this.isMetric ? 'true' : 'false';
 
     let params: HttpParams = new HttpParams();

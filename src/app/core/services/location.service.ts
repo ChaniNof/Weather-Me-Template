@@ -11,6 +11,8 @@ export class LocationService {
   constructor(private httpClient: HttpClient) {}
 
   getAutocompleteLocation(searchText: string): Observable<Location[]> {
+    debugger
+    console.log("sec   "+searchText);
     let params: HttpParams = new HttpParams();
     params = params.append('apikey', environment.apiKey);
     params = params.append('q', searchText);

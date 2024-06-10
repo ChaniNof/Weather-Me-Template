@@ -1,0 +1,46 @@
+.weather-card {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 30px;
+  height: 100%;
+  background-image: url(https://app2.weatherwidget.org/skin/img/bg/clear_day.jpg);
+  color: #f0f8ff;
+  }
+  .search{
+    background-color: #f0f8ff;
+    border-radius: 30px;
+    padding: 10px;
+     width: 30%; 
+     margin: 20px;
+     }
+.weather-card-dark{
+  background-color: #D6DBE1 !important;
+  height: calc(100% - 59px);
+  color: rgba(19, 52, 93, 1) !important;
+  font-weight: bold;
+}
+.grid-item{
+  padding: 5%;
+}
+ .grid-container{
+  display: flex;
+ flex-direction: row;
+ padding: 5%;
+ }
+
+ .full-star :after{
+  content: "\2605";
+ }
+
+ .empty-star:after{
+  content: "\2606";
+ }
+
+ .full-star:hover :after{
+  content: "\2606";
+ }
+
+ .empty-star :hover:after{
+  content: "\2605";
+ }

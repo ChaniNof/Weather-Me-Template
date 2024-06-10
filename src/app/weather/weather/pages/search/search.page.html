@@ -1,0 +1,61 @@
+<mat-card [ngClass]="{ 'weather-card-dark': isDark, 'weather-card': !isDark }">
+  <h2 style="text-align: center;"> {{currentLocation.LocalizedName}}</h2>
+  <mat-card-header><input type="button" value="Dark/Light" (click)="!isDark">
+    <mat-card-title style="text-align: -webkit-center;">Today's Weather</mat-card-title>
+  </mat-card-header>
+  <form class="form">
+    <div class="search"><input type="search" style="background-color: #f0f8ff;border: none;"
+        placeholder="search location" id="input" [(ngModel)]="text" matInput autocomplete="on" spellcheck="true"
+        role="combobox" aria-controls="matches" aria-expanded="true" aria-live="true" [formControl]="myControl"
+        [matAutocomplete]="auto" (keydown)="autoComplete()"><img width="5%" style="padding-left: 15%;"
+        src="../../../../../assets/icons/search-icon.svg"></div>
+
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of listLocation" [value]="option" [(ngModel)]="currentLocation"
+        (click)="searchWeather()">
+        {{option.LocalizedName}} , {{option. Country.LocalizedName}}
+        <span class="empty-star" *ngif="!isFaivorate(option)" (click)="toggleFavorate(option)"><img
+            src="../../../../../assets/icons/empty-favorite-icon.svg"></span>
+        <span class="full-star" *ngif="isFaivorate(option)"><img
+            src="../../../../../assets/icons/favorite-icon.svg"></span>
+        <span class="empty-star"></span>
+        <span class="full-star"></span>
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+  <mat-card-content>
+    <div style="text-align: center;" *ngIf="weatherData">
+      <div><label>{{weatherData.Headline.EffectiveDate}} | {{weatherData.Headline.Severity}} | {{weatherData.Headline.
+          EndDate}} </label>
+        <p>{{weatherData.Headline.Text}}</p>
+        <a href=weatherData.Headline.MobileLink>weatherData.MobileLink</a>
+        <a>{{weatherData.Headline.Link}}</a>
+      </div>
+      <div *ngIf="weatherData" class="grid-container">
+        <div class="grid-item" *ngFor=" let day of weatherData.DailyForecasts">
+          <div style="border-color: black;">
+            <p>
+              <span>{{day.Date}}</span>
+            </p>
+            <p>
+              &nbsp;
+              <span>
+                <span style="font-size: large;">{{day.Temperature.Minimum.Value}} ° </span>
+                <span>{{day.Temperature.Minimum.Unit}}</span>
+              </span> -
+              <span>
+                <span style="font-size: large;">{{day.Temperature.Maximum.Value}} ° </span>
+                <span>{{day.Temperature.Maximum.Unit}}</span>
+              </span>
+            </p>
+            <img src="https://developer.accuweather.com/sites/default/files/{{day.Day.Icon}}-s.png">
+         
+            <a href=day.MobileLink>MobileLink</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+

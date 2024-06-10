@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { WeatherModule } from './weather/weather/weather.module';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -19,6 +23,8 @@ import { WeatherModule } from './weather/weather/weather.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    MatCardModule
   ],
   bootstrap: [AppComponent]
 })
